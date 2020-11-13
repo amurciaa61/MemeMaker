@@ -1,0 +1,96 @@
+﻿<Window x:Class="MemeMaker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MemeMaker"
+        mc:Ignorable="d"
+        Title="MeMeMaker"
+        Height="725"
+        Width="845"
+        Icon="Imagenes/24.ico">
+    <Window.Resources>
+        <!-- TextBox -->
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Margin"
+                    Value="0,10,30,0" />
+        </Style>
+        <!-- TextBlock Superior -->
+        <Style TargetType="{x:Type TextBlock}" x:Key="superior">
+            <Setter Property="Margin" Value="5,10,0,0"/>
+        </Style>
+        <!-- TextBlock Meme -->
+        <Style TargetType="{x:Type TextBlock}" x:Key="textBlockMeme">
+            <Setter Property="FontFamily"
+                    Value="Impact"/>
+            <Setter Property="FontSize"
+                    Value="36" />
+            <Setter Property="Foreground"
+                    Value="White" />
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <Grid DockPanel.Dock="top">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="85"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Text="Texto superior" 
+                       Style="{StaticResource superior}"/>
+            <TextBox Grid.Row="0"
+                     Grid.Column="1" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="0"
+                       Text="Texto inferior"
+                       Style="{StaticResource superior}" />
+            <TextBox Grid.Row="1"
+                     Grid.Column="1" />
+            <TextBlock Grid.Row="2"
+                       Grid.Column="0"
+                       Text="Alto"
+                       Style="{StaticResource superior}" />
+            <TextBlock Grid.Row="3"
+                       Grid.Column="0"
+                       Text="Ancho"
+                       Style="{StaticResource superior}" />
+            <TextBlock Grid.Row="4"
+                       Grid.Column="0"
+                       Text="Imagen"
+                       Style="{StaticResource superior}" />
+            <TextBox Grid.Row="4"
+                     Grid.Column="1" />
+            <CheckBox Grid.Row="5"
+                      Grid.Column="0"
+                      Content="Borde"
+                      IsChecked="true" 
+                      Margin="5,10,0,0"/>
+        </Grid>
+        <Border Margin="165,10" BorderBrush="Black" BorderThickness="2"
+                Background="#F3D2D2">
+        <Grid>
+             
+            <Image />
+            <TextBlock Style="{StaticResource textBlockMeme}"
+                       VerticalAlignment="Top"
+                       Margin="0,10,0,0" 
+                       HorizontalAlignment="Center"
+                       Text="Texto Superior"/>
+            <TextBlock Style="{StaticResource textBlockMeme}"
+                VerticalAlignment="Bottom"
+                       Margin="0,0,10,0"
+                       HorizontalAlignment="Center"
+                       Text="Texto Inferior" />
+        </Grid>
+        </Border>
+    </DockPanel>
+</Window>

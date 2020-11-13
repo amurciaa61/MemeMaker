@@ -15,13 +15,13 @@
             <Setter Property="Margin"
                     Value="0,10,30,0" />
         </Style>
-        <!--  TextBlock Superior  -->
+        <!--  TextBlock Superiores  -->
         <Style x:Key="superior"
                TargetType="{x:Type TextBlock}">
             <Setter Property="Margin"
                     Value="5,10,0,0" />
         </Style>
-        <!--  TextBlock Meme  -->
+        <!--  TextBlock Meme -->
         <Style x:Key="textBlockMeme"
                TargetType="{x:Type TextBlock}">
             <Setter Property="FontFamily"
@@ -35,6 +35,8 @@
                     <DropShadowEffect />
                 </Setter.Value>
             </Setter>
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
         </Style>
         <!-- Slider -->
         <Style TargetType="{x:Type Slider}">
@@ -51,6 +53,8 @@
             <Setter Property="HorizontalAlignment"
                     Value="Left" />
         </Style>
+        <!-- Conversor para el border -->
+        <local:BorderSiNo x:Key="coversor"></local:BorderSiNo>
     </Window.Resources>
     <ScrollViewer HorizontalScrollBarVisibility="Auto"
                   VerticalScrollBarVisibility="Auto">
@@ -116,7 +120,8 @@
                            Grid.Column="0"
                            Style="{StaticResource superior}"
                            Text="Borde" />
-                <CheckBox Grid.Row="5"
+                <CheckBox x:Name="borderCheckBox"
+                          Grid.Row="5"
                           Grid.Column="1"
                           Margin="0,10,30,0"
                           IsChecked="true" />
@@ -124,8 +129,8 @@
             <Border Margin="0,10,0,0"
                     Background="#F3D2D2"
                     BorderBrush="Black"
-                    BorderThickness="2"
-                    MaxWidth="{Binding ElementName=anchoSlider,Path=Value,Mode=OneWay}"
+                    BorderThickness="{Binding ElementName=borderCheckBox,Path=IsChecked,Converter={StaticResource coversor}}"
+                    MaxWidth="{Binding ElementName=anchoSlider,Path=Value}"
                     Height="{Binding ElementName=altoSlider,Path=Value}"
                     Width="{Binding ElementName=anchoSlider,Path=Value}"
                     VerticalAlignment="Top">
@@ -133,12 +138,10 @@
                     <Image Stretch="Fill"
                            Source="{Binding ElementName=imagenTextBox,Path=Text,Mode=OneWay}" />
                     <TextBlock Margin="0"
-                               HorizontalAlignment="Center"
                                VerticalAlignment="Top"
                                Style="{StaticResource textBlockMeme}"
                                Text="{Binding ElementName=superiorTextBox,Path=Text}" />
                     <TextBlock Margin="0,0,10,0"
-                               HorizontalAlignment="Center"
                                VerticalAlignment="Bottom"
                                Style="{StaticResource textBlockMeme}"
                                Text="{Binding ElementName=inferiorTextBox,Path=Text}" />

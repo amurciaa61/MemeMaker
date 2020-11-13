@@ -80,7 +80,7 @@
         <Grid>
              
             <Image />
-            <TextBlock Style="{StaticResource textBlockMeme}"
+            <TextBlock Style="{StaticResource textBlockMeme}" 
                        VerticalAlignment="Top"
                        Margin="0,10,0,0" 
                        HorizontalAlignment="Center"

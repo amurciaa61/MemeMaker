@@ -1,63 +1,50 @@
-﻿<Window x:Class="MemeMaker.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:MemeMaker"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Title="MeMeMaker"
-        Width="845"
-        Height="725"
-        Icon="Imagenes/24.ico"
-        mc:Ignorable="d">
+﻿<Window
+    x:Class="MemeMaker.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MemeMaker"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MeMeMaker"
+    Width="845"
+    Height="725"
+    Icon="Imagenes/24.ico"
+    mc:Ignorable="d">
     <Window.Resources>
         <!--  TextBox  -->
         <Style TargetType="{x:Type TextBox}">
-            <Setter Property="Margin"
-                    Value="0,10,30,0" />
+            <Setter Property="Margin" Value="0,10,30,0" />
         </Style>
         <!--  TextBlock Superiores  -->
-        <Style x:Key="superior"
-               TargetType="{x:Type TextBlock}">
-            <Setter Property="Margin"
-                    Value="5,10,0,0" />
+        <Style x:Key="superior" TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="5,10,0,0" />
         </Style>
-        <!--  TextBlock Meme -->
-        <Style x:Key="textBlockMeme"
-               TargetType="{x:Type TextBlock}">
-            <Setter Property="FontFamily"
-                    Value="Impact" />
-            <Setter Property="FontSize"
-                    Value="36" />
-            <Setter Property="Foreground"
-                    Value="White" />
+        <!--  TextBlock Meme  -->
+        <Style x:Key="textBlockMeme" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Impact" />
+            <Setter Property="FontSize" Value="36" />
+            <Setter Property="Foreground" Value="White" />
             <Setter Property="Effect">
                 <Setter.Value>
                     <DropShadowEffect />
                 </Setter.Value>
             </Setter>
-            <Setter Property="HorizontalAlignment"
-                    Value="Center" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="TextAlignment" Value="Center" />
         </Style>
-        <!-- Slider -->
+        <!--  Slider  -->
         <Style TargetType="{x:Type Slider}">
-            <Setter Property="Maximum"
-                    Value="1000" />
-            <Setter Property="Minimum"
-                    Value="100" />
-            <Setter Property="Margin"
-                    Value="0,10,0,0" />
-            <Setter Property="Value"
-                    Value="500" />
-            <Setter Property="Width"
-                    Value="600" />
-            <Setter Property="HorizontalAlignment"
-                    Value="Left" />
+            <Setter Property="Maximum" Value="1000" />
+            <Setter Property="Minimum" Value="100" />
+            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="Value" Value="500" />
+            <Setter Property="Width" Value="600" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
-        <!-- Conversor para el border -->
-        <local:BorderSiNo x:Key="coversor"></local:BorderSiNo>
+        <!--  Conversor para el border  -->
+        <local:BorderSiNo x:Key="coversor" />
     </Window.Resources>
-    <ScrollViewer HorizontalScrollBarVisibility="Auto"
-                  VerticalScrollBarVisibility="Auto">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <DockPanel>
             <Grid DockPanel.Dock="Top">
                 <Grid.RowDefinitions>
@@ -72,79 +59,89 @@
                     <ColumnDefinition Width="85" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="superiorTextBlock"
-                           Grid.Row="0"
-                           Grid.Column="0"
-                           Style="{StaticResource superior}"
-                           Text="Texto superior" />
-                <TextBox Grid.Row="0"
-                         Grid.Column="1"
-                         x:Name="superiorTextBox"
-                         Text="{Binding ElementName=superiorTextBlock,Path=Text,Mode=OneWay}" />
-                <TextBlock x:Name="inferiorTextBlock"
-                           Grid.Row="1"
-                           Grid.Column="0"
-                           Style="{StaticResource superior}"
-                           Text="Texto inferior" />
-                <TextBox x:Name="inferiorTextBox"
-                         Grid.Row="1"
-                         Grid.Column="1"
-                         Text="{Binding ElementName=inferiorTextBlock,Path=Text,Mode=OneWay}" />
-                <TextBlock Grid.Row="2"
-                           Grid.Column="0"
-                           Style="{StaticResource superior}"
-                           Text="Alto" />
-                <StackPanel Grid.Row="2"
-                            Grid.Column="1">
+                <TextBlock
+                    x:Name="superiorTextBlock"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Style="{StaticResource superior}"
+                    Text="Texto superior" />
+                <TextBox
+                    x:Name="superiorTextBox"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="{Binding ElementName=superiorTextBlock, Path=Text, Mode=OneWay}" />
+                <TextBlock
+                    x:Name="inferiorTextBlock"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Style="{StaticResource superior}"
+                    Text="Texto inferior" />
+                <TextBox
+                    x:Name="inferiorTextBox"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="{Binding ElementName=inferiorTextBlock, Path=Text, Mode=OneWay}" />
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Style="{StaticResource superior}"
+                    Text="Alto" />
+                <StackPanel Grid.Row="2" Grid.Column="1">
                     <Slider x:Name="altoSlider" />
                 </StackPanel>
-                <TextBlock Grid.Row="3"
-                           Grid.Column="0"
-                           Style="{StaticResource superior}"
-                           Text="Ancho" />
-                <StackPanel Grid.Row="3"
-                            Grid.Column="1">
-                    <Slider x:Name="anchoSlider"
-                            Minimum="100"
-                            Maximum="1000" />
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Style="{StaticResource superior}"
+                    Text="Ancho" />
+                <StackPanel Grid.Row="3" Grid.Column="1">
+                    <Slider
+                        x:Name="anchoSlider"
+                        Maximum="1000"
+                        Minimum="100" />
                 </StackPanel>
-                <TextBlock Grid.Row="4"
-                           Grid.Column="0"
-                           Style="{StaticResource superior}"
-                           Text="Imagen" />
-                <!--Text="https://www.losreplicantes.com/images/articulos/17000/17248/s3.jpg"-->
-                <TextBox x:Name="imagenTextBox"
-                         Grid.Row="4"
-                         Grid.Column="1" />
-                <TextBlock Grid.Row="5"
-                           Grid.Column="0"
-                           Style="{StaticResource superior}"
-                           Text="Borde" />
-                <CheckBox x:Name="borderCheckBox"
-                          Grid.Row="5"
-                          Grid.Column="1"
-                          Margin="0,10,30,0"
-                          IsChecked="true" />
+                <TextBlock
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Style="{StaticResource superior}"
+                    Text="Imagen" />
+                <!--  Text="https://www.losreplicantes.com/images/articulos/17000/17248/s3.jpg"  -->
+                <TextBox
+                    x:Name="imagenTextBox"
+                    Grid.Row="4"
+                    Grid.Column="1" />
+                <TextBlock
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Style="{StaticResource superior}"
+                    Text="Borde" />
+                <CheckBox
+                    x:Name="borderCheckBox"
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Margin="0,10,30,0"
+                    IsChecked="true" />
             </Grid>
-            <Border Margin="0,10,0,0"
-                    Background="#F3D2D2"
-                    BorderBrush="Black"
-                    BorderThickness="{Binding ElementName=borderCheckBox,Path=IsChecked,Converter={StaticResource coversor}}"
-                    MaxWidth="{Binding ElementName=anchoSlider,Path=Value}"
-                    Height="{Binding ElementName=altoSlider,Path=Value}"
-                    Width="{Binding ElementName=anchoSlider,Path=Value}"
-                    VerticalAlignment="Top">
+            <Border
+                Width="{Binding ElementName=anchoSlider, Path=Value}"
+                Height="{Binding ElementName=altoSlider, Path=Value}"
+                MaxWidth="{Binding ElementName=anchoSlider, Path=Value}"
+                Margin="0,10,0,0"
+                Background="#F3D2D2"
+                BorderBrush="Black"
+                BorderThickness="{Binding ElementName=borderCheckBox, Path=IsChecked, Converter={StaticResource coversor}}">
                 <Grid>
-                    <Image Stretch="Fill"
-                           Source="{Binding ElementName=imagenTextBox,Path=Text,Mode=OneWay}" />
-                    <TextBlock Margin="0"
-                               VerticalAlignment="Top"
-                               Style="{StaticResource textBlockMeme}"
-                               Text="{Binding ElementName=superiorTextBox,Path=Text}" />
-                    <TextBlock Margin="0,0,10,0"
-                               VerticalAlignment="Bottom"
-                               Style="{StaticResource textBlockMeme}"
-                               Text="{Binding ElementName=inferiorTextBox,Path=Text}" />
+                    <Image Source="{Binding ElementName=imagenTextBox, Path=Text, Mode=OneWay}" Stretch="Fill" />
+                    <TextBlock
+                        Margin="0"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource textBlockMeme}"
+                        Text="{Binding ElementName=superiorTextBox, Path=Text}" />
+                    <TextBlock
+                        Margin="0,0,10,0"
+                        VerticalAlignment="Bottom"
+                        Style="{StaticResource textBlockMeme}"
+                        Text="{Binding ElementName=inferiorTextBox, Path=Text}" />
                 </Grid>
             </Border>
         </DockPanel>

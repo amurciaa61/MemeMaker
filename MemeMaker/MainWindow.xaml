@@ -95,10 +95,7 @@
                     Style="{StaticResource superior}"
                     Text="Ancho" />
                 <StackPanel Grid.Row="3" Grid.Column="1">
-                    <Slider
-                        x:Name="anchoSlider"
-                        Maximum="1000"
-                        Minimum="100" />
+                    <Slider x:Name="anchoSlider" />
                 </StackPanel>
                 <TextBlock
                     Grid.Row="4"
